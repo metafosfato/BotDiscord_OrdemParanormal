@@ -1,0 +1,21 @@
+# Environment variables & secrets
+.env
+Chaves_discord.txt
+
+# Python bytecode / cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Virtual Environments
+venv/
+.venv/
+env/
+.env/
+
+# IDE / System
+.vscode/
+.idea/
+*.swp
+.DS_Store

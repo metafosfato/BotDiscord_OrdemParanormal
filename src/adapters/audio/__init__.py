@@ -1,0 +1,3 @@
+"""
+Audio Adapters package.
+"""
