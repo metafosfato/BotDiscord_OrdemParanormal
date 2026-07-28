@@ -7,6 +7,7 @@ from src.adapters.cris.cris_fetcher import CRISFetcherAdapter
 from src.adapters.repository.memory_repository import MemoriaPersonagemRepository
 from src.adapters.llm.gemini_adapter import GeminiLLMAdapter
 from src.adapters.audio.edge_tts_adapter import EdgeTTSAdapter
+from src.adapters.rag.supabase_rag_adapter import SupabaseRAGAdapter
 from src.use_cases.importar_personagem import ImportarPersonagemCRISUseCase
 from src.use_cases.executar_teste_mecanico import ExecutarTesteMecanicoUseCase
 from src.use_cases.processar_interacao_mestre import ProcessarInteracaoMestreUseCase
@@ -23,12 +24,14 @@ class SessionCog(commands.Cog):
         self.cris_adapter = CRISFetcherAdapter()
         self.llm_service = GeminiLLMAdapter()
         self.audio_service = EdgeTTSAdapter()
+        self.rag_service = SupabaseRAGAdapter()
 
         # Instância dos Casos de Uso
         self.importar_uc = ImportarPersonagemCRISUseCase(self.cris_adapter, self.repository)
         self.teste_mecanico_uc = ExecutarTesteMecanicoUseCase(self.repository)
         self.mestre_uc = ProcessarInteracaoMestreUseCase(
             llm_service=self.llm_service,
+            rag_service=self.rag_service,
             audio_service=self.audio_service
         )
 
